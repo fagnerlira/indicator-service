@@ -37,7 +37,7 @@ class IndicatorControllerIntegrationErrorTest {
         .andExpect(status().isNotFound())
         .andExpect(MockMvcResultMatchers.jsonPath("code", Matchers.is(3)))
         .andExpect(
-            MockMvcResultMatchers.jsonPath("message", Matchers.is("The county code not found")));
+            MockMvcResultMatchers.jsonPath("message", Matchers.is("The country code not found")));
   }
 
   private MultiValueMap<String, String> getDefaultParams() {

@@ -39,7 +39,7 @@ class RequestWorldBankValidationTest {
             validation.isValidReturn(jsonNode)
     );
     assertEquals(3, exception.getIssue().getCode());
-    assertEquals("The county code not found", exception.getIssue().getMessage());
+    assertEquals("The country code not found", exception.getIssue().getMessage());
   }
 
   @Test
