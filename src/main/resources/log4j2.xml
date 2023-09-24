@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+  <Properties>
+    <Property name="LOG_PATTERN">
+      %style{%d{yyyy-MM-dd HH:mm:ss.SSS}}{magenta}
+      %highlight{${LOG_LEVEL_PATTERN:-%5p}}{{FATAL=Bright red, ERROR=Bright red, WARN=yellow,
+      INFO=Bright green, DEBUG=Cyan, TRACE=green}} ${hostName} --- %style{[requestTraceId:
+      %X{requestTraceId}]}{normal} %style{[Country: %X{country}]}{normal} %style{[ServiceName:
+      search-api]}{normal} --- %style{[%15.15t] %-40.40c{1.}}{cyan} %highlight{:
+      %m%n%ex}{{FATAL=Bright red, ERROR=Bright red, WARN=yellow, INFO=normal, DEBUG=Cyan,
+      TRACE=green}}
+    </Property>
+  </Properties>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="${LOG_PATTERN}"/>
+    </Console>
+    <Routing name="Router">
+      <Routes pattern="$${env:LOG_APPENDER:-CONSOLE}">
+        <Route ref="Console" key="CONSOLE"/>
+      </Routes>
+    </Routing>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="Router"/>
+    </Root>
+  </Loggers>
+</Configuration>

@@ -1,0 +1,30 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/v2/country/COUNTRY_CODE_INVALID/indicator/SI.POV.DDAY",
+      "queryStringParameters": [
+        {
+          "name": "format",
+          "values": [
+            "json"
+          ]
+        }
+      ]
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": [
+        {
+          "message": [
+            {
+              "id": "120",
+              "key": "Invalid value",
+              "value": "The provided parameter value is not valid"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

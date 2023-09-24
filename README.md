@@ -1,2 +1,1 @@
-# indicator-service - 
-# Critério
+# indicator-service

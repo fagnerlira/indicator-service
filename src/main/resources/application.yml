@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: indicator-service
+
+server:
+  port: 8080
+
+world-bank-url:
+  scheme: ${WORLD-BANK-SCHEME:http}
+  host: ${WORLD-BANK-HOST:api.worldbank.org}
+  path: ${WORLD-BANK-PATH:/v2/country/{countryId}/{EndPath}}
+  EndPath: ${WORLD-BANK-END-PATH:indicator/SI.POV.DDAY?format=json}
+
