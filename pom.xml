@@ -24,6 +24,7 @@
     <test.container.version>1.18.3</test.container.version>
     <springdoc.version>2.1.0</springdoc.version>
     <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+    <docker-maven-plugin.version>0.40.1</docker-maven-plugin.version>
   </properties>
 
   <dependencies>
@@ -167,6 +168,45 @@
           </annotationProcessorPaths>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>${docker-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>build-image</id>
+            <phase>package</phase>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <images>
+            <image>
+              <alias>${project.name}</alias>
+              <name>${project.artifactId}</name>
+              <build>
+                <contextDir>${project.basedir}</contextDir>
+                <tags>
+                  <tag>${project.version}</tag>
+                </tags>
+                <args>
+                  <PROJECT_JAR_PATH>target/${project.build.finalName}.jar</PROJECT_JAR_PATH>
+                </args>
+              </build>
+              <run>
+                <ports>
+                  <port>${server.port}:${server.port}</port>
+                </ports>
+              </run>
+            </image>
+          </images>
+        </configuration>
+      </plugin>
+
+
     </plugins>
   </build>
 

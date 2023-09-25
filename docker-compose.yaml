@@ -1,7 +1,7 @@
 version: '3.4'
 services:
-  docker-indicator-service:
-    image: docker-indicador-service
+  indicator-service:
+    image: indicador-service
     restart: always
     build:
       context: .
